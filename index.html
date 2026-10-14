@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Celebration Hub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 🔒 Security Password Gate Overlay -->
+    <div id="password-gate" class="gate-overlay">
+        <div class="glass-form-card">
+            <h2>🔒 Family Vault Access</h2>
+            <p>Please enter the password to view the private celebration gallery.</p>
+            <input type="password" id="password-input" placeholder="Enter password...">
+            <button onclick="checkPassword()">Unlock Access</button>
+            <p id="error-msg" class="error"></p>
+        </div>
+    </div>
+
+    <!-- 📱 Main Protected App Layout -->
+    <div class="app-container" id="app-content" style="display: none;">
+        
+        <!-- 🧭 Permanent Clean Left Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo">✨ Family Memories</div>
+            <nav class="nav-menu">
+                <button class="main-tab active" id="btn-home" onclick="loadHome()">🏠 Home</button>
+                <button class="main-tab" id="btn-abhi" onclick="loadProfileDashboard('abhi')">👦 Abhi</button>
+                <button class="main-tab" id="btn-avani" onclick="loadProfileDashboard('avani')">👧 Avani</button>
+                <button class="main-tab" id="btn-rakesh" onclick="loadProfileDashboard('rakesh')">👨 Rakesh</button>
+                <button class="main-tab" id="btn-vishwa" onclick="loadProfileDashboard('vishwa')">👩 Vishwa</button>
+                <button class="main-tab" id="btn-family" onclick="loadProfileDashboard('family')">👨‍👩‍👧‍👦 Family Function</button>
+            </nav>
+            <div class="sidebar-footer">🔒 Protected Media Vault</div>
+        </aside>
+
+        <!-- 📸 Dynamic Right Display Window Panel -->
+        <main class="main-content" id="main-panel">
+            <!-- Loaded dynamically via script.js -->
+        </main>
+    </div>
+
+    <!-- Hidden native file inputs used dynamically by JavaScript -->
+    <input type="file" id="hidden-file-uploader" style="display: none;">
+    <input type="file" id="background-file-uploader" accept="image/*" style="display: none;">
+
+    <script src="script.js"></script>
+</body>
+</html>

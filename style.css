@@ -1,0 +1,331 @@
+/* Reset and Liquid Glass Engine Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+body {
+    background: #060709;
+    color: #ffffff;
+    overflow: hidden;
+}
+
+.app-container {
+    display: flex;
+    height: 100vh;
+}
+
+/* 🔒 Password Security Gate Overlay */
+.gate-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, #1c150b 0%, #050608 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.glass-form-card {
+    width: 400px;
+    padding: 40px;
+    border-radius: 24px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    text-align: center;
+}
+
+.glass-form-card h2 { color: #ffd700; margin-bottom: 12px; }
+.glass-form-card p { font-size: 14px; color: rgba(255, 255, 255, 0.6); margin-bottom: 25px; }
+.glass-form-card input {
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 20px;
+    outline: none;
+}
+.glass-form-card input:focus { border-color: #ffd700; box-shadow: 0 0 15px rgba(255, 215, 0, 0.2); }
+.glass-form-card button {
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    border: none;
+    background: linear-gradient(90deg, #ffd700, #ffa500);
+    color: #000;
+    font-weight: 700;
+    cursor: pointer;
+}
+.error { color: #ff4a4a; font-size: 13px; margin-top: 15px; }
+
+/* 🧭 Sidebar Setup */
+.sidebar {
+    width: 280px;
+    background: linear-gradient(180deg, rgba(15, 17, 23, 0.9) 0%, rgba(8, 9, 12, 0.98) 100%);
+    backdrop-filter: blur(20px);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 35px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 800;
+    background: linear-gradient(45deg, #fff2a3, #ffd700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.nav-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    flex-grow: 1;
+    width: 100%;
+}
+
+.main-tab {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 16px 20px;
+    border-radius: 14px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.main-tab:hover, .main-tab.active {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 215, 0, 0.5);
+    transform: translateX(6px);
+}
+
+.main-tab.active {
+    background: linear-gradient(90deg, rgba(255, 215, 0, 0.15), rgba(255, 255, 255, 0.03));
+    border-color: #ffd700;
+}
+
+.sidebar-footer {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.3);
+    text-align: center;
+    margin-top: auto;
+    padding-top: 20px;
+}
+
+/* 📸 Right Content Window Panels */
+.main-content {
+    flex: 1;
+    padding: 50px;
+    overflow-y: auto;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background: radial-gradient(circle at 80% 20%, #15120a 0%, #060709 100%);
+    transition: background 0.5s ease-in-out;
+}
+
+.welcome-card { 
+    text-align: center; 
+    padding: 80px 40px; 
+    background: rgba(6, 7, 9, 0.75);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 32px;
+    max-width: 750px;
+    margin: 60px auto;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+}
+.welcome-card h2 { color: #ffd700; font-size: 38px; margin-bottom: 15px; }
+.welcome-card p { color: rgba(255, 255, 255, 0.7); font-size: 16px; line-height: 1.6; margin-bottom: 30px; }
+
+/* Admin Controls Interface Wrapper */
+.admin-control-box {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Action Control Buttons Layout */
+.admin-bg-btn, .admin-reset-btn {
+    padding: 12px 24px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.admin-bg-btn {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.8);
+}
+.admin-bg-btn:hover {
+    background: rgba(212, 175, 55, 0.15);
+    border-color: #ffd700;
+    color: #ffd700;
+}
+
+.admin-reset-btn {
+    background: rgba(255, 74, 74, 0.06);
+    border: 1px solid rgba(255, 74, 74, 0.2);
+    color: rgba(255, 120, 120, 0.8);
+}
+.admin-reset-btn:hover {
+    background: rgba(255, 74, 74, 0.2);
+    border-color: #ff4a4a;
+    color: #ffffff;
+}
+
+/* 🎛️ Header Navigation inside Inner Gallery Pages */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+.page-header h2 {
+    font-size: 28px;
+    text-transform: capitalize;
+    background: linear-gradient(to right, #ffffff, #ffd700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.back-btn, .action-upload-btn {
+    padding: 12px 24px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.back-btn {
+    background: rgba(6, 7, 9, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    color: white;
+}
+.back-btn:hover { background: rgba(255, 255, 255, 0.15); }
+
+.action-upload-btn {
+    background: linear-gradient(90deg, #ffd700, #ffa500);
+    border: none;
+    color: #000;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+}
+.action-upload-btn:hover { transform: scale(1.03); }
+
+/* 🗂️ Grid Layouts */
+.dashboard-menu-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(250px, 400px));
+    gap: 40px;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.media-display-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+/* 💎 THE LIQUID GLASS CARD ARCHITECTURE */
+.media-card {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    cursor: pointer;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.04) 100%);
+    backdrop-filter: blur(30px) saturate(180%);
+    -webkit-backdrop-filter: blur(30px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.6), 
+        inset 0 1px 3px rgba(255, 255, 255, 0.5),
+        inset 0 -10px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
+}
+
+.dashboard-card { 
+    padding: 60px 30px; 
+    text-align: center;
+    background: linear-gradient(135deg, rgba(6, 7, 9, 0.7) 0%, rgba(255, 255, 255, 0.05) 100%);
+}
+.dashboard-card h3 { font-size: 24px; margin-bottom: 8px; color: #fff; }
+.dashboard-card p { font-size: 14px; color: rgba(255, 255, 255, 0.5); }
+
+.media-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: 24px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 45%, rgba(0, 0, 0, 0.4) 100%);
+    z-index: 3;
+}
+
+.media-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 
+        0 40px 70px rgba(0, 0, 0, 0.85), 
+        0 0 50px rgba(212, 175, 55, 0.35), 
+        inset 0 1px 6px rgba(255, 255, 255, 0.7);
+}
+
+.media-card img, .media-card video {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.85);
+    transition: filter 0.4s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.media-card:hover img, .media-card:hover video {
+    filter: brightness(1.05);
+    transform: scale(1.04);
+}
+
+/* ✨ Sweeping Glare Effect */
+.media-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -160%;
+    width: 60%;
+    height: 200%;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.65) 50%, rgba(255, 255, 255, 0) 100%);
+    transform: rotate(30deg);
+    z-index: 4;
+}
+.media-card:hover::before {
+    left: 160%;
+    transition: left 0.85s cubic-bezier(0.3, 1, 0.2, 1);
+}
